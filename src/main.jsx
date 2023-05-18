@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Error from './components/Error.jsx';
 import Home from './Pages/Home.jsx';
+import Login from './Pages/Login/Login.jsx';
 
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path:"/login",
+        element: <Login></Login>
       }
     ]
   },
