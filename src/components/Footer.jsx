@@ -3,7 +3,7 @@
 const Footer = () => {
     return (
         
-  <footer className="footer p-14 bg-[#C2B28F] text-neutral-content md:flex md:justify-around items-center">
+  <footer className="footer py-14 bg-[#C2B28F] text-neutral-content md:flex md:justify-around items-center">
   
   <div>
     <img src="vintage-car.svg" alt="" />

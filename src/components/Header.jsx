@@ -23,7 +23,7 @@ const Header = () => {
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/">All Toys</Link></li>
                         <li><Link to="/">My Toys</Link></li>
-                        <li><Link to="/">Add a Toys</Link></li>
+                        <li><Link to="/addtoy">Add a Toys</Link></li>
                         <li><Link to="/blog">Blogs</Link></li>
 
                     </ul>
@@ -31,47 +31,15 @@ const Header = () => {
 
                 <div className="avatar">
                     <div className="w-10 rounded-full ring ring-accent ring-offset-base-100 ring-offset-2">
-                        <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        <img src="" />
                     </div>
                 </div>
 
                 {/* login page  */}
                 
                 <div className="ml-4">
-                    {/* The button to open modal */}
-                    <label htmlFor="my-modal-5" className="btn">Login</label>
-
-                    {/* Put this part before </body> tag */}
-                    <input type="checkbox" id="my-modal-5" className="modal-toggle" />
-                    <div className="modal">
-                        <form className="modal-box w-11/12 max-w-5xl">
-
-
-                            <div className="form-control">
-                                <h1 className="text-4xl font-bold text-center">Please Login</h1>
-                                <label className="label">
-                                    <span className="label-text">Your Email</span>
-                                </label>
-                                <label className="input-group">
-                                    
-                                    <input type="email" placeholder="Your Mail" className="input input-bordered" />
-                                </label>
-                                <label className="label">
-                                    <span className="label-text">Your Password</span>
-                                </label>
-                                <label className="input-group">
-                                    
-                                    <input type="password" placeholder="Password" className="input input-bordered" />
-                                </label>
-                            </div>
-
-
-                            <div className="modal-action">
-                                <input className="btn" type="submit" value="Login" />
-                                <label htmlFor="my-modal-5" >Close</label>
-                            </div>
-                        </form>
-                    </div>
+                   
+                    <Link to="/login"><input className="btn" type="submit" value="Login" /></Link>
                 </div>
 
 

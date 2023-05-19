@@ -11,21 +11,21 @@ const Gallery = () => {
         },
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 5
+            items: 3
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 4
+            items: 2
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
-            items: 3
+            items: 1
         }
     };
 
     return (
-        <div>
-            <h2 className='text-5xl font-semibold text-center my-12'> Welcome to Showcase of Car Toys</h2>
+        <div className='mx-auto w-3/4'>
+            <h2 className='text-5xl font-semibold text-center my-12'>Showcase of Car Toys</h2>
             <Carousel
             responsive={responsive}>
                 <div><img className='w-3/4 rounded-lg ' src="https://i.ibb.co/ZSbt9Jk/1.jpg" alt="" /></div>

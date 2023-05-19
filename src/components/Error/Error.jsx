@@ -3,7 +3,7 @@ import './Error.css'
 
 const Error = () => {
     return (
-        <div>
+        <div className='bg-white'>
 
 
 
