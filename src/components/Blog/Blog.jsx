@@ -1,13 +1,14 @@
+/* eslint-disable react/no-unescaped-entities */
 
 
 const Blog = () => {
     return (
-        <div className="lg:grid grid-cols-2">
-            <div className="min-h-[300px] lg:w-2/3 lg:min-h-[800px]  text-[#709F9D] flex flex-col justify-center items-center">
+        <div className="md:flex justify-center items-center mx-auto">
+            <div className=" mt-6 md:mt-0 min-h-[300px] w-2/3 lg:min-h-[800px]  text-[#709F9D] flex flex-col justify-center items-center">
                 <img src="question.png" alt="" />
                 <h1 className="text-4xl font-bold">WELCOME TO <br /> <span className="text-7xl text-gray-600 font-bold">BLOG !!!</span></h1>
             </div>
-            <div className="w-full px-8 mt-20 space-y-2 shadow lg:max-w-md">
+            <div className="w-full mx-auto px-8 mt-20 space-y-2 md:pr-8 ">
                 <details className="p-4 rounded-lg">
                     <summary className="font-semibold">What is an access token and refresh token? How do they work and where should we store them on the client-side?</summary>
                     <div className="mt-3">
@@ -26,20 +27,24 @@ const Blog = () => {
                         Compare SQL and NoSQL databases?
                     </summary>
                     <div className="mt-3">
-                        <p className="text-sm leading-6 italic text-gray-500 flex items-center">
+                    <h1 className="text-xl font-bold text-center">SQL vs NoSQL</h1>
+                        <p className="text-sm leading-6 italic text-gray-500 lg:flex items-center gap-14">
+                            
                             <ul>
-                                <li>Stands for Structured Query Language</li>
-                                <li>Relational database management system (RDBMS)</li>
-                                <li>Suitable for structured data with predefined schema</li>
-                                <li>Data is stored in tables with columns and rows</li>
-                                <li></li>
+                                <h1 className="text-xl font-bold">SQL</h1>
+                                <li className="list-disc">Stands for Structured Query Language</li>
+                                <li className="list-disc">Relational database management system (RDBMS)</li>
+                                <li className="list-disc">Suitable for structured data with predefined schema</li>
+                                <li className="list-disc">Data is stored in tables with columns and rows</li>
+                                <li className="list-disc">Follows ACID properties (Atomicity, Consistency, Isolation, Durability) for transaction management</li>
                             </ul>
                             <ul>
-                                <li>Stands for Not Only SQL</li>
-                                <li>Non-relational database management system</li>
-                                <li>Suitable for unstructured and semi-structured data</li>
-                                <li>	Data is stored in collections or documents</li>
-                                <li></li>
+                            <h1 className="text-xl font-bold mt-6 lg:mt-0">NoSQL</h1>
+                                <li className="list-disc">Stands for Not Only SQL</li>
+                                <li className="list-disc">Non-relational database management system</li>
+                                <li className="list-disc">Suitable for unstructured and semi-structured data</li>
+                                <li className="list-disc">Data is stored in collections or documents</li>
+                                <li className="list-disc">Does not necessarily follow ACID properties</li>
                             </ul>
                         </p>
                     </div>
@@ -51,7 +56,7 @@ const Blog = () => {
                     </summary>
                     <div className="mt-3">
                         <p className="text-sm leading-6 italic text-gray-500">
-                            React with Tailwind CSS Faq Accordion 3
+                        NestJS is a framework for developing modern server-side applications in Node. js. It is built on top of Express, a popular server framework for Node. js, and provides a robust set of features for building efficient, scalable, and enterprise-grade applications.
                         </p>
                     </div>
                 </details>
@@ -62,7 +67,7 @@ const Blog = () => {
                     </summary>
                     <div className="mt-3">
                         <p className="text-sm leading-6 italic text-gray-500">
-                            React with Tailwind CSS Faq Accordion 4
+                        Aggregation is the process of going through various phases with a huge collection of documents to process them. A pipeline is made up of the several stages. Filtering, sorting, grouping, reshaping, and altering documents as they move through a pipeline are all possible.
                         </p>
                     </div>
                 </details>

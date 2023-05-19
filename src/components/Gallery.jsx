@@ -25,7 +25,7 @@ const Gallery = () => {
 
     return (
         <div>
-            <h2 className='text-5xl font-semibold text-center my-10'> Welcome to Showcase of Car Toys</h2>
+            <h2 className='text-5xl font-semibold text-center my-12'> Welcome to Showcase of Car Toys</h2>
             <Carousel
             responsive={responsive}>
                 <div><img className='w-3/4 rounded-lg ' src="https://i.ibb.co/ZSbt9Jk/1.jpg" alt="" /></div>
