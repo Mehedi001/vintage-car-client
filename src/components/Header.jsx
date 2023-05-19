@@ -24,7 +24,7 @@ const Header = () => {
                         <li><Link to="/">All Toys</Link></li>
                         <li><Link to="/">My Toys</Link></li>
                         <li><Link to="/">Add a Toys</Link></li>
-                        <li><Link to="/">Blogs</Link></li>
+                        <li><Link to="/blog">Blogs</Link></li>
 
                     </ul>
                 </div>
