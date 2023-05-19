@@ -16,7 +16,7 @@ const Header = () => {
                         </ul>
                     </div>
                     <img className="w-20" src="vintage-car.svg" alt="" />
-                    <a className="btn btn-ghost text-white normal-case font-semibold text-3xl"><span className="text-[#E2D7A7]">Vintage</span>&nbsp;Car</a>
+                    <Link to="/"><a className="btn btn-ghost text-white normal-case font-semibold text-3xl"><span className="text-[#E2D7A7]">Vintage</span>&nbsp;Car</a></Link>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-white">
