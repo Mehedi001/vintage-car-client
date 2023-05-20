@@ -1,9 +1,13 @@
 /* eslint-disable react/no-unknown-property */
 
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const AddToy = () => {
+
+    const {user} = useContext(AuthContext);
 
 
     const handleAddToy = event => {
@@ -16,8 +20,10 @@ const AddToy = () => {
         const email = form.email.value;
         const category = form.category.value;
         const description = form.description.value;
+        const rating = form.rating.value;
+        const photo = form.photo.value;
 
-        const newToy = {toyName, sellerName, quantity, price,email,category, description}
+        const newToy = {toyName, photo, sellerName, quantity, rating, price,email,category, description}
         console.log (newToy)
 
         fetch('http://localhost:8800/toy', {
@@ -36,6 +42,7 @@ const AddToy = () => {
                     icon: 'success',
                     confirmButtonText: 'Thank you'
                   })
+                  form.reset('');
             }
         })
     }
@@ -56,14 +63,14 @@ const AddToy = () => {
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                             Seller Name
                         </label>
-                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="sellerName" placeholder="Seller Name" />
+                        <input value={user?.displayName} className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="sellerName" placeholder="Seller Name" />
                         
                     </div>
                     <div className="w-full px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                             Email
                         </label>
-                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="email"  name="email" placeholder="E-mail" />
+                        <input value={user?.email} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="email"  name="email" placeholder="E-mail" />
                     </div>
                 </div>
                 <div className="flex flex-wrap lg:-mx-3 mb-6">
@@ -87,9 +94,11 @@ const AddToy = () => {
                             Rating
                         </label>
                         <div className="relative">
-                            <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                            <select name="rating" className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                 <option>1</option>
+                                <option>2</option>
                                 <option>3</option>
+                                <option>4</option>
                                 <option>5</option>
                             </select>
                             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -109,7 +118,14 @@ const AddToy = () => {
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                             Details Description
                         </label>
-                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" name="description" placeholder="Details Description" />
+                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="description" placeholder="Details Description" />
+                        
+                    </div>
+                    <div className="w-full px-3">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                            Photo URL
+                        </label>
+                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="photo" placeholder="Photo URL" />
                         
                     </div>
                 </div>

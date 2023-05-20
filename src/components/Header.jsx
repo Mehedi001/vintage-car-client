@@ -1,7 +1,14 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import  { AuthContext } from "../AuthProvider/AuthProvider";
 
 
 const Header = () => {
+    const {user, logout} = useContext(AuthContext)
+    const signOut = () =>{
+        logout()
+    }
+    
     return (
         <nav>
             <div className="navbar bg-[#709F9D] flex justify-between">
@@ -32,24 +39,44 @@ const Header = () => {
                     </ul>
                 </div>
 
-                <div className="avatar">
-                    <div className="w-10 rounded-full ring ring-accent ring-offset-base-100 ring-offset-2">
-                        <img src="" />
-                    </div>
+                <div className="dropdown dropdown-end">
+                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 rounded-full">
+                        {user? <img src={user?.photoURL} title={`${user?.displayName} ( Click her for Logout )`}  /> : <img title="This is Profile photo of user" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png" alt="this is profile photo of user" />}
+                        </div>
+                    </label>
+                    <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                        <li>
+                            {user?<p className="justify-between">
+                           {user?.displayName}
+                           </p>:<p className="justify-between">
+                           No User Available
+                           </p>}
+                        </li>
+                       {
+                        user&& <li><p>{user?.email}</p></li>
+                       }
+                       {
+                        user&& <li><button onClick={signOut}>Logout</button></li>
+                       }
+                    </ul>
                 </div>
+            
 
-                {/* login page  */}
+            {/* login page  */}
 
-                <div className="ml-4">
+            {
+                !user && <div className="ml-4">
 
-                    <Link to="/login"><input className="btn" type="submit" value="Login" /></Link>
-                </div>
-
-
-
-
+                <Link to="/login"><input className="btn" type="submit" value="Login" /></Link>
             </div>
-        </nav>
+            }
+
+
+
+
+        </div>
+        </nav >
     );
 };
 

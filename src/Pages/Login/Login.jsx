@@ -1,18 +1,69 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/no-unescaped-entities */
 
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import app from "../../firebase/firebase.config";
+
+const auth = getAuth(app);
+
 
 
 const Login = () => {
+
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
+    const { login } = useContext(AuthContext);
+    // const location = useLocation();
+    // const navigate = useNavigate();
+    // const from = location.state?.from?.pathname || "/";
+
+
+    const googleProvider = new GoogleAuthProvider();
+
+
+
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth, googleProvider)
+            .then(result => {
+                const loggedInUser = result.user;
+                if (!loggedInUser) {
+                    setError('Please Check Your email & password')
+                }
+                setSuccess('User Login Successfull');
+                setError('');
+                // navigate(from, { replace: true });
+            })
+            .catch(error => {
+                setError(error)
+            })
+
+
+    }
+
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        const loginInfo = { email, password }
-        console.log(loginInfo)
+        login(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                if (!loggedUser) {
+                    setError('Please Check Your email & password')
+                }
+                setSuccess('User Login Successfull');
+                form.reset();
+                setError('');
+                // navigate(from, { replace: true });
+            })
+
+            .catch(error => {
+                setError(error.message)
+            })
     }
     return (
         <div>
@@ -38,14 +89,18 @@ const Login = () => {
                                         <label htmlFor="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
                                     </div>
 
+                                    <p className="text-red-600">{error}</p>
+                                    <p className="text-green-600">{success}</p>
+
                                     <div className="relative">
                                         <button className="bg-[#E0A370] text-white rounded-md px-2 py-1">Login Now</button>
                                     </div>
                                     <h1>Not a seller ? <Link className="text-[#709F9D] hover:text-blue-600" to="/registration">Register Now</Link> </h1>
-                                    <div className="relative">
-                                        <button className="text-[#E0A370] btn-outline border hover:bg-[#E0A370]  rounded-md px-2 py-1"><FcGoogle className="inline-block"></FcGoogle> Login with Google</button>
-                                    </div>
+
                                 </form>
+                                <div className="relative">
+                                    <button onClick={handleGoogleSignIn} className="text-[#E0A370] btn-outline border hover:bg-[#E0A370]  rounded-md px-2 py-1"><FcGoogle className="inline-block"></FcGoogle> Login with Google</button>
+                                </div>
                             </div>
                         </div>
                     </div>
