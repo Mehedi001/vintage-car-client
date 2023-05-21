@@ -1,25 +1,30 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
-
+import { ImSpinner2 } from "react-icons/im";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 
 const MyToys = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, loading, setLoading } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
 
     useEffect(() => {
+        setLoading(true);
         fetch(`https://vintage-car-server.vercel.app/toymail?email=${user.email}`)
             .then(res => res.json())
-            .then(data => setToys(data))
+            .then(data => {
+                setToys(data)
+                setLoading(false);
+            })
     }, [])
 
 
+
     const handleDelete = _id => {
-    
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -37,7 +42,7 @@ const MyToys = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                   
+
                         if (data.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted!',
@@ -54,10 +59,13 @@ const MyToys = () => {
         })
     }
 
+    if (loading) {
+        return (<div className='my-48'><ImSpinner2 className='text-9xl mx-auto animate-spin ' /></div>)
+    }
 
     return (
         <div className="my-12 container mx-auto">
-            <h1 className="text-3xl font-bold text-center my-6">All Toys is Here</h1>
+            <h1 className="text-3xl font-bold text-center my-6"> {toys.sellerName} Toys</h1>
             <div className="overflow-x-auto">
                 <table className="table table-compact w-full">
                     <thead>

@@ -1,21 +1,29 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { ImSpinner2 } from "react-icons/im";
 
 
 const AllToys = () => {
 
 
     const [toys, setToys] = useState([]);
-
+    const {loading, setLoading} = useContext(AuthContext)
 
 
     useEffect(() => {
+        setLoading(true);
         fetch('https://vintage-car-server.vercel.app/toy')
             .then(res => res.json())
-            .then(data => setToys(data.slice(0, 20)))
+            .then(data => {
+                setToys(data.slice(0, 20))
+                setLoading(false)
+            })
     }, [])
 
-
+    if (loading) {
+        return (<div className='my-48'><ImSpinner2 className='text-9xl mx-auto animate-spin '/></div>)
+    }
 
     return (
         <div className="my-12 container mx-auto">
