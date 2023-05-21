@@ -22,7 +22,7 @@ const MyToys = () => {
     }, [])
 
 
-    useTitle('My toys')
+    useTitle('My Toys')
 
 
     const handleDelete = _id => {

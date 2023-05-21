@@ -1,10 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
+
 
 
 const SingleCarCard = () => {
     const data = useLoaderData()
+    useTitle(data.toyName)
  
     return (
         <div className="my-16 px-2 lg:px-0 mx-auto container">
