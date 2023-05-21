@@ -24,7 +24,7 @@ const Category = () => {
         .then(data => setCarData (data.slice(0, 4)))
     },[])
 
-    console.log(carData)
+
 
     return (
         <div className='my-8'>
