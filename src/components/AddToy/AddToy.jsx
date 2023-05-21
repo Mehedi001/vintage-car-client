@@ -3,12 +3,13 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 
 const AddToy = () => {
 
     const {user} = useContext(AuthContext);
-
+    useTitle ('Add toy')
 
     const handleAddToy = event => {
         event.preventDefault();
@@ -24,7 +25,7 @@ const AddToy = () => {
         const photo = form.photo.value;
 
         const newToy = {toyName, photo, sellerName, quantity, rating, price,email,category, description}
-        console.log (newToy)
+        
 
         fetch('https://vintage-car-server.vercel.app/toy', {
             method: 'POST',

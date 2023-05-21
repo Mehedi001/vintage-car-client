@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ImSpinner2 } from "react-icons/im";
+import useTitle from "../../hooks/useTitle";
 
 
 const AllToys = () => {
@@ -10,7 +11,8 @@ const AllToys = () => {
     const [toys, setToys] = useState([]);
     const {loading, setLoading} = useContext(AuthContext)
 
-
+    useTitle('All Toys');
+    
     useEffect(() => {
         setLoading(true);
         fetch('https://vintage-car-server.vercel.app/toy')
@@ -27,7 +29,7 @@ const AllToys = () => {
 
     return (
         <div className="my-12 container mx-auto">
-            <h1 className="text-3xl font-bold text-center my-6">All Toys is Here</h1>
+            <h1 className="text-3xl font-bold text-center my-6">All Toys are Here</h1>
             <form className="my-4">
                 <div className="form-control">
                     <div className="input-group">

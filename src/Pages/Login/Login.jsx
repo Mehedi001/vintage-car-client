@@ -7,6 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import app from "../../firebase/firebase.config";
+import useTitle from "../../hooks/useTitle";
 
 const auth = getAuth(app);
 
@@ -19,9 +20,11 @@ const Login = () => {
     const { login } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+
+
+    useTitle('Login')
+
     const from = location.state?.from?.pathname || "/";
-
-
     const googleProvider = new GoogleAuthProvider();
 
 

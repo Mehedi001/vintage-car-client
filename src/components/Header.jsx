@@ -24,7 +24,7 @@ const Header = () => {
                                 user && <li><Link to="/mytoys">My Toys</Link></li>
                             }
                             {
-                                user && <li><Link to="/addtoy">Add a Toys</Link></li>
+                                user && <li><Link to="/addtoy">Add Toy</Link></li>
                             }
                             <li><Link to="/blog">Blogs</Link></li>
                         </ul>
@@ -40,7 +40,7 @@ const Header = () => {
                             user && <li><Link to="/mytoys">My Toys</Link></li>
                         }
                         {
-                            user && <li><Link to="/addtoy">Add a Toys</Link></li>
+                            user && <li><Link to="/addtoy">Add Toy</Link></li>
                         }
                         <li><Link to="/blog">Blogs</Link></li>
 

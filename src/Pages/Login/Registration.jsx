@@ -3,6 +3,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../hooks/useTitle";
 
 
 const Registration = () => {
@@ -12,7 +13,8 @@ const Registration = () => {
     const {register, auth} = useContext(AuthContext)
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
-
+    
+    useTitle('Register')
 
     const handleRegister = event => {
         

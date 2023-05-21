@@ -1,26 +1,28 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import { ImSpinner2 } from "react-icons/im";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 
 
 const MyToys = () => {
 
-    const { user, loading, setLoading } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
 
     useEffect(() => {
-        setLoading(true);
+        
         fetch(`https://vintage-car-server.vercel.app/toymail?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
-                setToys(data)
-                setLoading(false);
+                setToys(data)   
             })
     }, [])
 
+
+    useTitle('My toys')
 
 
     const handleDelete = _id => {
@@ -59,13 +61,21 @@ const MyToys = () => {
         })
     }
 
-    if (loading) {
-        return (<div className='my-48'><ImSpinner2 className='text-9xl mx-auto animate-spin ' /></div>)
+
+
+    if (toys.length == 0) {
+        return <div className="h-screen flex flex-col justify-center items-center">
+            <h1 className="text-3xl font-bold text-center my-2"> My Toys</h1>
+            <p className="text-xl text-center text-yellow-600 my-4"> You haven't added any toys yet !!!</p>
+            <p className="text-xl text-center my-4"> Want to add ??? <Link to="/addToy" className="text-cyan-500">Click Here</Link> </p>
+
+        </div>
     }
 
     return (
         <div className="my-12 container mx-auto">
-            <h1 className="text-3xl font-bold text-center my-6"> {toys.sellerName} Toys</h1>
+            <h1 className="text-3xl font-bold text-center my-2"> My Toys</h1>
+            <p className="text-xl text-center text-yellow-600 my-4"> {toys.length} toys found !!!</p>
             <div className="overflow-x-auto">
                 <table className="table table-compact w-full">
                     <thead>

@@ -5,7 +5,7 @@ import { useLoaderData } from "react-router-dom";
 
 const SingleCarCard = () => {
     const data = useLoaderData()
-    console.log(data)
+ 
     return (
         <div className="my-16 px-2 lg:px-0 mx-auto container">
             <div className="card lg:card-side bg-base-100 shadow-xl">
