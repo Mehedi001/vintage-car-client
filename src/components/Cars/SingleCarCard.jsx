@@ -1,13 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 
 
-const SingleCar = () => {
+const SingleCarCard = () => {
     return (
         <div>
-         
-
+            <h1>This is car</h1>
         </div>
     );
 };
 
-export default SingleCar;
+export default SingleCarCard;
