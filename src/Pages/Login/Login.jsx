@@ -17,9 +17,9 @@ const Login = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
     const { login } = useContext(AuthContext);
-    // const location = useLocation();
-    // const navigate = useNavigate();
-    // const from = location.state?.from?.pathname || "/";
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
 
 
     const googleProvider = new GoogleAuthProvider();
@@ -35,7 +35,7 @@ const Login = () => {
                 }
                 setSuccess('User Login Successfull');
                 setError('');
-                // navigate(from, { replace: true });
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 setError(error)
@@ -58,7 +58,7 @@ const Login = () => {
                 setSuccess('User Login Successfull');
                 form.reset();
                 setError('');
-                // navigate(from, { replace: true });
+                navigate(from, { replace: true });
             })
 
             .catch(error => {
