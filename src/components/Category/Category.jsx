@@ -13,13 +13,13 @@ const Category = () => {
   const toggleTab = (index, Category) => {
     setToggleState(index);
     setCarData([]);
-    fetch(`http://localhost:8800/toys/${Category}`)
+    fetch(`https://vintage-car-server.vercel.app/toys/${Category}`)
         .then (res => res.json())
         .then(data => setCarData (data.slice(0, 4)))
   };
 
     useEffect(() => {
-        fetch('http://localhost:8800/toys/Regular')
+        fetch('https://vintage-car-server.vercel.app/toys/Regular')
         .then (res => res.json())
         .then(data => setCarData (data.slice(0, 4)))
     },[])
@@ -29,7 +29,7 @@ const Category = () => {
     return (
         <div className='my-8'>
             <hr />
-            <h2 className='text-6xl mt-10 text-center font-bold'>Sort by category</h2>
+            <h2 className='text-5xl mt-10 text-center font-bold'>Sort by category</h2>
         <div className="catCat">
       <div className="bloc-tabs"> 
         <button

@@ -12,14 +12,14 @@ const MyToys = () => {
     const [toys, setToys] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:8800/toymail?email=${user.email}`)
+        fetch(`https://vintage-car-server.vercel.app/toymail?email=${user.email}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [])
 
 
     const handleDelete = _id => {
-        console.log(_id);
+    
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -32,12 +32,12 @@ const MyToys = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:8800/toy/${_id}`, {
+                fetch(`https://vintage-car-server.vercel.app/toy/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                   
                         if (data.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted!',

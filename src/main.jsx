@@ -56,7 +56,7 @@ const router = createBrowserRouter([
         path: "/toy/:id",
         element: <PrivateRoute><SingleCarCard></SingleCarCard></PrivateRoute>,
         loader: async ({ params }) => {
-          return fetch(`http://localhost:8800/toy/${params.id}`)
+          return fetch(`https://vintage-car-server.vercel.app/toy/${params.id}`)
         }
 
       },
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         path: "/updateToy/:id",
         element: <PrivateRoute><UpdateToy></UpdateToy></PrivateRoute>,
         loader: async ({ params }) => {
-          return fetch(`http://localhost:8800/toy/${params.id}`)
+          return fetch(`https://vintage-car-server.vercel.app/toy/${params.id}`)
         }
       }
     ]

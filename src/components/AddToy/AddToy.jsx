@@ -26,7 +26,7 @@ const AddToy = () => {
         const newToy = {toyName, photo, sellerName, quantity, rating, price,email,category, description}
         console.log (newToy)
 
-        fetch('http://localhost:8800/toy', {
+        fetch('https://vintage-car-server.vercel.app/toy', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
