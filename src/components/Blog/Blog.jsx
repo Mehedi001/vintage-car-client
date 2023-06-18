@@ -9,7 +9,7 @@ const Blog = () => {
 
     useTitle('Blogs')
     return (
-        <div className="md:flex justify-center items-center mx-auto">
+        <div className="flex flex-col lg:flex-row justify-center items-center mx-auto">
             <div className=" mt-6 md:mt-0 min-h-[300px] w-2/3 lg:min-h-[800px]  text-[#709F9D] flex flex-col justify-center items-center">
                 <img src="question.png" alt="" />
                 <h1 className="text-4xl font-bold">WELCOME TO <br /> <span className="text-7xl text-gray-600 font-bold">BLOG !!!</span></h1>

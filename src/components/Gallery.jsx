@@ -24,7 +24,7 @@ const Gallery = () => {
     };
 
     return (
-        <div className='mx-auto w-3/4'>
+        <div data-aos="fade-down" className='mx-auto w-3/4'>
             <h2 className='text-5xl font-semibold text-center my-12'>Showcase of Car Toys</h2>
             <Carousel
             responsive={responsive}>

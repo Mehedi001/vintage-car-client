@@ -23,7 +23,8 @@ const UpdateToy = () => {
 
         const updatedToy = { price, quantity, description }
 
-        console.log(updatedToy)
+        console.log (updatedToy)
+    
 
         // send data to the server
 
